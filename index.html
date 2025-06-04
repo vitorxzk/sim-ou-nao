@@ -7,13 +7,17 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Player de música invisível de fundo -->
+  <audio autoplay loop>
+    <source src="https://www.youtube.com/watch?v=JoFkQ7iAQcw" type="audio/mpeg" />
+    Seu navegador não suporta o elemento de áudio.
+  </audio>
+
   <div class="container" role="main" aria-label="Pedido de namoro especial">
-    <h1>Olá, louise!</h1>
+    <h1>Olá, linda!</h1>
     <div class="subtitle">Tenho algo muito especial para te dizer...</div>
     <div id="mensagem" aria-live="polite" aria-atomic="true"></div>
-    <button id="botaoPedido" aria-describedby="mensagem">
-      Clique aqui para ver minha mensagem <span class="heart">❤️</span>
-    </button>
+    <button id="botaoPedido" aria-describedby="mensagem">Clique aqui para ver minha mensagem <span class="heart">❤️</span></button>
     <div class="btn-group" id="botoesResposta" aria-label="Opções de resposta">
       <button id="btnSim" aria-label="Responder Sim">Sim</button>
       <button id="btnNao" aria-label="Responder Não">Não</button>
