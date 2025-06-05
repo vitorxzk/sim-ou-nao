@@ -2,20 +2,174 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quer namorar comigo?</title>
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Estilo romântico e moderno para o site */
+
+    @import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Roboto:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 40px 60px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+    }
+
+    h1 {
+      font-family: 'Parisienne', cursive;
+      font-size: 3.5rem;
+      color: #d6336c;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.25rem;
+      color: #6f4a77;
+      margin-bottom: 30px;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 15px 40px;
+      font-size: 1.3rem;
+      color: #fff;
+      background: linear-gradient(45deg, #ff6392, #d6336c);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease, opacity 0.7s ease;
+      box-shadow: 0 6px 15px rgba(214, 51, 108, 0.5);
+      flex: 1;
+      min-width: 100px;
+      user-select: none;
+    }
+
+    button:hover {
+      background: linear-gradient(45deg, #d6336c, #ff6392);
+      transform: scale(1.05);
+    }
+
+    #response {
+      font-size: 1.5rem;
+      color: #d6336c;
+      opacity: 0;
+      transition: opacity 1s ease;
+      margin-top: 20px;
+      display: none;
+    }
+
+    #response.visible {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Responsividade */
+
+    @media (max-width: 450px) {
+      .container {
+        padding: 30px 20px;
+        max-width: 90vw;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+
+      .btn-group {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      button {
+        width: 100%;
+        padding: 15px 0;
+        font-size: 1.1rem;
+      }
+
+      #response {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>Oi, Louise!</h1>
+    <h1>Oi, linda!</h1>
     <p>Eu tenho algo muito especial para te perguntar...</p>
-    <button id="ask-btn">Quer namorar comigo?</button>
-    <div id="response" class="hidden">
-      <p>Eu fico muito feliz se você disser que sim! ❤️</p>
+
+    <div class="btn-group">
+      <button id="btn-sim">Sim</button>
+      <button id="btn-nao">Não</button>
     </div>
+
+    <div id="response"></div>
   </div>
-  <script src="script.js"></script>
+  <script>
+    // Número completo para WhatsApp com código do país (Brasil)
+    const whatsappNumber = '557599756277';
+
+    // Mensagens personalizadas para WhatsApp
+    const msgSim = 'Ela disse SIM! ❤️😊';
+    const msgNao = 'Ela disse NÃO :(';
+
+    const btnSim = document.getElementById('btn-sim');
+    const btnNao = document.getElementById('btn-nao');
+    const response = document.getElementById('response');
+    const btnGroup = document.querySelector('.btn-group');
+
+    function enviarWhatsApp(mensagem) {
+      // Monta URL para WhatsApp Web / Mobile
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensagem)}`;
+      // Abre em nova aba/janela
+      window.open(url, '_blank');
+    }
+
+    function mostrarResposta(texto) {
+      // Esconde os botões
+      btnGroup.style.opacity = '0';
+      setTimeout(() => {
+        btnGroup.style.display = 'none';
+
+        // Mostra a mensagem de resposta com fade-in
+        response.textContent = texto;
+        response.classList.add('visible');
+      }, 700);
+    }
+
+    btnSim.addEventListener('click', () => {
+      enviarWhatsApp(msgSim);
+      mostrarResposta('Que incrível! Obrigado por dizer SIM! ❤️');
+    });
+
+    btnNao.addEventListener('click', () => {
+      enviarWhatsApp(msgNao);
+      mostrarResposta('Tudo bem, obrigado por sua sinceridade. 💜');
+    });
+  </script>
 </body>
 </html>
 
