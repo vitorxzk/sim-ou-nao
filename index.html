@@ -159,6 +159,10 @@
     }
 
     btnMensagem.addEventListener('click', () => {
+      // Exibe a mensagem
+      response.textContent = 'Você deseja namorar comigo?';
+      response.classList.add('visible');
+
       // Exibe os botões "Sim" e "Não"
       btnGroup.innerHTML = `
         <button id="btn-sim">Sim</button>
@@ -177,10 +181,6 @@
         enviarWhatsApp(msgNao);
         mostrarResposta('Tudo bem, obrigado por sua sinceridade. 💜');
       });
-
-      // Mostra a mensagem
-      response.textContent = 'Você deseja namorar comigo?';
-      response.classList.add('visible');
     });
   </script>
 </body>
