@@ -2,28 +2,20 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pedido Especial</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quer namorar comigo?</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Player de música invisível de fundo -->
-  <audio autoplay loop>
-    <source src="https://www.youtube.com/watch?v=JoFkQ7iAQcw" type="audio/mpeg" />
-    Seu navegador não suporta o elemento de áudio.
-  </audio>
-
-  <div class="container" role="main" aria-label="Pedido de namoro especial">
-    <h1>Olá, Louise!</h1>
-    <div class="subtitle">Tenho algo muito especial para te dizer...</div>
-    <div id="mensagem" aria-live="polite" aria-atomic="true"></div>
-    <button id="botaoPedido" aria-describedby="mensagem">Clique aqui para ver minha mensagem <span class="heart">❤️</span></button>
-    <div class="btn-group" id="botoesResposta" aria-label="Opções de resposta">
-      <button id="btnSim" aria-label="Responder Sim">Sim</button>
-      <button id="btnNao" aria-label="Responder Não">Não</button>
+  <div class="container">
+    <h1>Oi, Louise!</h1>
+    <p>Eu tenho algo muito especial para te perguntar...</p>
+    <button id="ask-btn">Quer namorar comigo?</button>
+    <div id="response" class="hidden">
+      <p>Eu fico muito feliz se você disser que sim! ❤️</p>
     </div>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
+
