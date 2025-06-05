@@ -121,9 +121,8 @@
     <h1>Oi, Louise!</h1>
     <p>Eu tenho algo muito especial para te perguntar...</p>
 
-    <div class="btn-group">
-      <button id="btn-sim">Sim</button>
-      <button id="btn-nao">Não</button>
+    <div class="btn-group" id="btn-group">
+      <button id="btn-mensagem">Deseja ver minha mensagem?</button>
     </div>
 
     <div id="response"></div>
@@ -136,10 +135,9 @@
     const msgSim = ' SIMMM! ❤️😊';
     const msgNao = 'Ela disse NÃO :(';
 
-    const btnSim = document.getElementById('btn-sim');
-    const btnNao = document.getElementById('btn-nao');
+    const btnMensagem = document.getElementById('btn-mensagem');
     const response = document.getElementById('response');
-    const btnGroup = document.querySelector('.btn-group');
+    const btnGroup = document.getElementById('btn-group');
 
     function enviarWhatsApp(mensagem) {
       // Monta URL para WhatsApp Web / Mobile
@@ -160,16 +158,30 @@
       }, 700);
     }
 
-    btnSim.addEventListener('click', () => {
-      enviarWhatsApp(msgSim);
-      mostrarResposta('Que incrível! Obrigado por dizer SIM! ❤️');
-    });
+    btnMensagem.addEventListener('click', () => {
+      // Exibe os botões "Sim" e "Não"
+      btnGroup.innerHTML = `
+        <button id="btn-sim">Sim</button>
+        <button id="btn-nao">Não</button>
+      `;
 
-    btnNao.addEventListener('click', () => {
-      enviarWhatsApp(msgNao);
-      mostrarResposta('Tudo bem, obrigado por sua sinceridade. 💜');
+      const btnSim = document.getElementById('btn-sim');
+      const btnNao = document.getElementById('btn-nao');
+
+      btnSim.addEventListener('click', () => {
+        enviarWhatsApp(msgSim);
+        mostrarResposta('Que incrível! Obrigado por dizer SIM! ❤️');
+      });
+
+      btnNao.addEventListener('click', () => {
+        enviarWhatsApp(msgNao);
+        mostrarResposta('Tudo bem, obrigado por sua sinceridade. 💜');
+      });
+
+      // Mostra a mensagem
+      response.textContent = 'Você deseja namorar comigo?';
+      response.classList.add('visible');
     });
   </script>
 </body>
 </html>
-
