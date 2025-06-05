@@ -1,46 +1,24 @@
-const mensagemEl = document.getElementById('mensagem');
-const botaoPedido = document.getElementById('botaoPedido');
-const botoesResposta = document.getElementById('botoesResposta');
-const btnSim = document.getElementById('btnSim');
-const btnNao = document.getElementById('btnNao');
+// script.js
+// Interação para o botão do pedido de namoro
 
-const mensagemTexto = "Eu gosto muito de você e queria saber se aceita namorar comigo? 💖";
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('ask-btn');
+  const response = document.getElementById('response');
 
-// Função para digitar mensagem animada
-function digitarMensagem(texto, elemento, callback) {
-  elemento.style.opacity = '1';
-  let i = 0;
-  elemento.textContent = '';
-  const interval = setInterval(() => {
-    elemento.textContent += texto.charAt(i);
-    i++;
-    if (i > texto.length - 1) {
-      clearInterval(interval);
-      if (callback) callback();
-    }
-  }, 100);
-}
+  btn.addEventListener('click', () => {
+    // Esconde o botão com transição suave
+    btn.style.transition = 'opacity 0.7s ease';
+    btn.style.opacity = '0';
 
-botaoPedido.addEventListener('click', () => {
-  botaoPedido.disabled = true;
-  digitarMensagem(mensagemTexto, mensagemEl, () => {
-    botaoPedido.textContent = '💞 Obrigado por me ouvir!';
-    botoesResposta.classList.add('show');
+    // Após o botão desaparecer, esconde ele do layout e mostra a resposta
+    setTimeout(() => {
+      btn.style.display = 'none';
+      response.classList.remove('hidden');
+      // força repaint para garantir transição
+      void response.offsetWidth;
+      // mostra com fade-in
+      response.classList.add('visible');
+    }, 700);
   });
 });
 
-btnSim.addEventListener('click', () => {
-  mensagemEl.textContent = "💖 Yay! Eu sabia que você ia dizer sim! Vamos ser muito felizes juntos!";
-  btnSim.disabled = true;
-  btnNao.disabled = true;
-  btnSim.style.backgroundColor = '#4caf50'; // verde
-  btnNao.style.backgroundColor = '#ccc'; // cinza
-});
-
-btnNao.addEventListener('click', () => {
-  mensagemEl.textContent = "😢 Tudo bem, vou continuar sendo seu amigo e admirando você de longe.";
-  btnSim.disabled = true;
-  btnNao.disabled = true;
-  btnNao.style.backgroundColor = '#f44336'; // vermelho
-  btnSim.style.backgroundColor = '#ccc'; // cinza
-});
