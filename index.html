@@ -18,6 +18,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
+      overflow: hidden;
     }
 
     .container {
@@ -27,6 +29,8 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
       text-align: center;
       max-width: 400px;
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
@@ -83,6 +87,23 @@
       opacity: 1;
     }
 
+    /* Adicionando girassóis e tartarugas como fundo */
+    .sunflower {
+      position: absolute;
+      top: 10%;
+      left: 5%;
+      width: 100px;
+      z-index: 0;
+    }
+
+    .turtle {
+      position: absolute;
+      bottom: 10%;
+      right: 5%;
+      width: 80px;
+      z-index: 0;
+    }
+
     /* Responsividade */
 
     @media (max-width: 450px) {
@@ -117,6 +138,9 @@
   </style>
 </head>
 <body>
+  <img src="https://example.com/sunflower.png" alt="Girassol" class="sunflower" />
+  <img src="https://example.com/turtle.png" alt="Tartaruga" class="turtle" />
+
   <div class="container">
     <h1>Oi, Louise!</h1>
     <p>Eu tenho algo muito especial para te perguntar...</p>
